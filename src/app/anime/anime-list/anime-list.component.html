@@ -3,7 +3,6 @@
   <div class="row">
     <p>La cantidad total de episodios es {{total}} y el rating promedio es {{promedio.toFixed(2)}}</p>
     <div *ngIf="selected">
-      <app-anime-detail [animeDetail]="selectedBAnime"></app-anime-detail>
       <hr>
     </div>
     <div class="col-4" *ngFor="let anime of animes">
