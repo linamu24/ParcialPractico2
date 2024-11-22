@@ -9,15 +9,24 @@ import { AnimeService } from '../anime.service';
 })
 export class AnimeListComponent implements OnInit {
 
+  promedio=0;
+  total=0;
   selectedBAnime!: Anime;
   selected = false;
   animes: Array<Anime> = [];
-  constructor(private animeService: AnimeService) { }
+  constructor(private animeService: AnimeService) {}
 
   getAnimes(): void {
+    
     this.animeService.getAnimes().subscribe((animes) => {
       this.animes = animes;
+      animes.forEach(anime => {
+        this.total+=anime.episode
+        this.promedio += anime.Rating/animes.length
+        
+      });
     });
+    
   }
 
   onSelected(anime: Anime): void {
